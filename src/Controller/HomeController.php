@@ -3,19 +3,24 @@
 namespace App\Controller;
 
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController
+class HomeController extends Controller
 {
 
     /**
      * @Route("/", name="app")
      */
     public function index() {
-        return new Response(
-          "<html><body>Hello World</body></html>"
-        );
+        $data = [
+            'message' => 'hello world'
+        ];
+        
+        return $this->render('home/index.html.twig', [
+            'data' => $data
+        ]);
     }
 
 }
